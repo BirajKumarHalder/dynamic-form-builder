@@ -1,0 +1,19 @@
+<div *ngIf="formDefs?.length>0">
+    <form [formGroup]="form">
+        <div *ngFor="let formDef of formDefs">
+            <div *ngIf="formDef.type==='text' || formDef.type==='password'">
+                <label>{{formDef.label}}</label>
+                <input type="{{formDef.type}}" name="{{formDef.name}}" class="{{formDef.class}}"
+                    styles="{{formDef.styles}}" formControlName="{{formDef.modelBind}}">
+            </div>
+            <div *ngIf="formDef.type==='submit'">
+                <button type="submit" class="{{formDef.class}}" styles="{{formDef.styles}}" (click)="submitForm()"
+                    [disabled]="!form.valid"> {{formDef.label}} </button>
+            </div>
+            <div *ngIf="formDef.type==='reset'">
+                <button type="button" class="{{formDef.class}}" styles="{{formDef.styles}}" (click)="resetForm()">
+                    {{formDef.label}} </button>
+            </div>
+        </div>
+    </form>
+</div>

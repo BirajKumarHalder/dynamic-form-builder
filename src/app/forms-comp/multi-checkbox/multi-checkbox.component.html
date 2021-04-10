@@ -1,0 +1,25 @@
+<h1>Multi select checkbox</h1>
+<div class="row">
+    <div class="col">
+        <form [formGroup]="myForm">
+            <div>
+                <input type="checkbox" (change)="selectAll($event)" [checked]="allSelected">
+                Select All
+            </div>
+            <div *ngFor="let outputOption of myForm.controls.outputOptions['controls']; let i=index;"
+                formArrayName="outputOptions">
+                <input type="checkbox" [formControlName]="i" (change)="checkChange()">
+                {{outputOptions[i].name}}
+            </div>
+            <div>
+                <button type="submit" (click)="submitForm()"> Submit </button>
+            </div>
+        </form>
+    </div>
+    <div class="col">
+        <h5>Selected options</h5>
+        <div *ngFor="let option of selectedOptions;">
+            {{option.name}}
+        </div>
+    </div>
+</div>

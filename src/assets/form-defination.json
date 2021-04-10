@@ -1,0 +1,30 @@
+{
+    "loginForm": {
+        "formDefs": [
+            {
+                "name": "User Id",
+                "label": "User Id",
+                "type": "text",
+                "default": "userId",
+                "required": "true",
+                "modelBind": "userId"
+            },
+            {
+                "name": "Password",
+                "label": "Password",
+                "type": "password",
+                "default": "password",
+                "required": "true",
+                "modelBind": "password"
+            },
+            {
+                "label": "Submit",
+                "type": "submit"
+            },
+            {
+                "label": "Reset",
+                "type": "reset"
+            }
+        ]
+    }
+}
