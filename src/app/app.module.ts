@@ -10,10 +10,13 @@ import { LoginComponent } from './login/login.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppConfigService } from './app-config.service';
 import { MultiCheckboxComponent } from './forms-comp/multi-checkbox/multi-checkbox.component';
+import { PrimaryrouteComponent } from './primaryroute/primaryroute.component';
+import { SecordaryrouteComponent } from './secordaryroute/secordaryroute.component';
+import { PrimarychildComponent } from './primarychild/primarychild.component';
 
 const routes: Routes = [{
   path: '',
-  redirectTo: '/multi-check-box',
+  redirectTo: '/primary',
   pathMatch: 'full'
 }, {
   path: 'login',
@@ -22,6 +25,20 @@ const routes: Routes = [{
 }, {
   path: 'multi-check-box',
   component: MultiCheckboxComponent
+}, {
+  path: 'primary',
+  component: PrimaryrouteComponent,
+  children: [
+    {
+      path: 'child',
+      component: PrimarychildComponent,
+      outlet: 'primaryChildOutlet'
+    }
+  ]
+}, {
+  path: 'secondary',
+  component: SecordaryrouteComponent,
+  outlet: 'secondaryOutlet'
 }]
 
 export function loadFormDefs(appConfigService: AppConfigService) {
@@ -33,7 +50,9 @@ export function loadFormDefs(appConfigService: AppConfigService) {
     AppComponent,
     FormbuilderComponent,
     LoginComponent,
-    MultiCheckboxComponent
+    MultiCheckboxComponent,
+    PrimaryrouteComponent,
+    SecordaryrouteComponent
   ],
   imports: [
     BrowserModule,

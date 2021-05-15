@@ -19,7 +19,6 @@ export class AppConfigService implements Resolve<any>{
         break;
     }
     return formDef;
-
   }
 
   loadFormDefinations(): Promise<any> {
